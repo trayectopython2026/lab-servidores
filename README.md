@@ -108,6 +108,12 @@ Mantené SSH en la red local de la demo. El túnel del final apunta al puerto de
 Desde la sesión SSH, creá una configuración para que el mini PC siga atendiendo peticiones durante la charla aunque nadie use su teclado o se apague la pantalla:
 
 ```bash
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+
+## si no funciona
+
+```bash
 sudo mkdir -p /etc/systemd/sleep.conf.d
 sudo tee /etc/systemd/sleep.conf.d/90-cfp20-awake.conf >/dev/null <<'EOF'
 [Sleep]
